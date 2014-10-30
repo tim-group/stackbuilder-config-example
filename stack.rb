@@ -47,7 +47,7 @@ stack 'helloworld' do
     # Declare dependency on another stack (target)
     #   * The fqdn of servers in the source stack (on the prod network) will be appended to a list of dependant_instances on the target stack
     #   * The target stack will provide config_params to the source stack
-    self.depends_on = ['example_db']
+    self.depends_on = ['hellodb']
     # For each machine in the stack
     each_machine do |machine|
       # Specify memory requirements (default: 2097152)
@@ -68,7 +68,7 @@ stack 'hello_db' do
     # Specify number of backup instances (default: 1) in the secondary_site
     self.backup_instances = 0
     # Specify number of master instances (default: 1) in the primary_site
-    self.master_instances = 0
+    self.master_instances = 1
     # Specify number of slave instances (default: 1) in the primary_site
     self.slave_instances = 0
     # Disable persistent storage (rebuilding server will rebuild storage == All data lost)
