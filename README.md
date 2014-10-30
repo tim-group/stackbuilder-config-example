@@ -1,16 +1,22 @@
-Stackbuild Config
+Stackbuilder Config
 =========
-This is a DSL that is used by stacks to configure services allows the following to be defined.
+This is a DSL that is used by [stackbuilder] to configure allocate, provision 'Stacks' of Virtual Machines
+
+[stackbuilder]:https://github.com/tim-group/stackbuilder
+[provisioning-tools]:https://github.com/tim-group/provisioning-tools
 
 Terminology
 -----------
 ##### Computenode:
-* KVM host that has been setup to host Stacks
+* This is a dom0 (KVM host) that has been configured to host stack built Virtual Machines
+* Dependencies:
+  * [provisioning-tools]
 
 #####Environments:
-* Contain a primary_site (location)
-* Contain a secondary_site (location)
-* Container for Stacks
+* Container of Stacks
+* Attributes:
+  * primary_site (location)
+  * secondary_site (location)
 
 #####Stack:
 * Container of Virtual Services
@@ -18,7 +24,7 @@ Terminology
 * Can be configured differently but are generally identical across all environments
 
 #####Virtual Service:
-* Container consisting of 1 or more virtual machine
+* Container consisting of 1 or more Virtual Machine's
 * Load balanced these can work jointly to provide a service eg. several apache servers provide proxying
 * Non-load balanced virtual machines, operate in a standalone basis (JBOVM)
 
