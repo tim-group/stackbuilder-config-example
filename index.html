@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Stackbuilder-config : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Stackbuilder-config</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/tim-group/stackbuilder-config">View on GitHub</a>
+
+          <h1 id="project_title">Stackbuilder-config</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/tim-group/stackbuilder-config/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/tim-group/stackbuilder-config/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a name="stackbuild-config" class="anchor" href="#stackbuild-config"><span class="octicon octicon-link"></span></a>Stackbuild Config</h3>
+
+<p>This is a DSL that is used by stacks to configure services allows the following to be defined.</p>
+
+<h2>
+<a name="terminology" class="anchor" href="#terminology"><span class="octicon octicon-link"></span></a>Terminology:</h2>
+
+<h3>
+<a name="computenode" class="anchor" href="#computenode"><span class="octicon octicon-link"></span></a>Computenode</h3>
+
+<ul>
+<li>KVM host that has been setup to host Stacks<br>
+</li>
+</ul>
+
+<h3>
+<a name="environments" class="anchor" href="#environments"><span class="octicon octicon-link"></span></a>Environments</h3>
+
+<ul>
+<li>Contain a primary_site (location)<br>
+</li>
+<li>Contain a secondary_site (location)<br>
+</li>
+<li>Container for Stacks<br>
+</li>
+</ul>
+
+<h3>
+<a name="stack" class="anchor" href="#stack"><span class="octicon octicon-link"></span></a>Stack</h3>
+
+<ul>
+<li>Container of Virtual Services<br>
+</li>
+<li>Exist in 0 or more environment<br>
+</li>
+<li>Can be configured differently but are generally identical across all environments<br>
+</li>
+</ul>
+
+<h3>
+<a name="virtual-service" class="anchor" href="#virtual-service"><span class="octicon octicon-link"></span></a>Virtual Service</h3>
+
+<ul>
+<li>Container consisting of 1 or more virtual machine<br>
+</li>
+<li>Load balanced these can work jointly to provide a service eg. several apache servers provide proxying<br>
+</li>
+<li>Non-load balanced virtual machines, operate in a standalone basis (JBOVM)<br>
+</li>
+</ul>
+
+<h3>
+<a name="virtual-machine" class="anchor" href="#virtual-machine"><span class="octicon octicon-link"></span></a>Virtual Machine</h3>
+
+<ul>
+<li>A single machine of a given type: e.g a single apache virtual machine<br>
+</li>
+<li>Can be individually configured but are generally identical to their siblings<br>
+</li>
+</ul>
+
+<h2>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+
+<h3>
+<a name="show-all-stacks-available-with-the-name-helloworld" class="anchor" href="#show-all-stacks-available-with-the-name-helloworld"><span class="octicon octicon-link"></span></a>Show all stacks available with the name 'helloworld'</h3>
+
+<pre><code>$ env='staging' rake -T helloworld
+rake sbx:helloworld:allocate            # allocate these machines to hosts (but don't actually launch them - this is a dry run)
+rake sbx:helloworld:allocate_vips       # allocate IPs for these virtual services
+rake sbx:helloworld:audit_hosts         # new hosts model auditing
+rake sbx:helloworld:clean               # clean away all traces of these machines
+rake sbx:helloworld:disable_notify      # disable notify for these machines
+rake sbx:helloworld:enable_notify       # enable notify for these machines
+rake sbx:helloworld:free_ip_allocation  # frees up ip and vip allocation of these machines
+rake sbx:helloworld:free_ips            # free IPs
+rake sbx:helloworld:free_vips           # free IPs for these virtual services
+rake sbx:helloworld:launch              # launch these machines
+rake sbx:helloworld:mping               # perform an MCollective ping against these machines
+rake sbx:helloworld:orc:resolve         # deploys the up2date version of the artifact according to the cmdb using orc
+rake sbx:helloworld:provision           # perform all steps required to create and configure the machine(s)
+rake sbx:helloworld:puppet:clean        # Remove signed certs from puppetmaster
+rake sbx:helloworld:puppet:poll_sign    # sign outstanding Puppet certificate signing requests for these machines
+rake sbx:helloworld:puppet:run          # run Puppet on these machines
+rake sbx:helloworld:puppet:sign         # sign outstanding Puppet certificate signing requests for these machines
+rake sbx:helloworld:puppet:wait         # wait for puppet to complete its run on these machines
+rake sbx:helloworld:reprovision         # perform a clean followed by a provision
+rake sbx:helloworld:resolve             # resolve the IP numbers of these machines
+rake sbx:helloworld:test                # carry out all appropriate tests on these machines
+rake sbx:helloworld:to_specs            # outputs the specs for these machines, in the format to feed to the provisioning tools
+rake sbx:helloworld:to_vip_spec         # outputs the specs for these machines, in the format to feed to the provisioning tools
+</code></pre>
+
+<h3>
+<a name="show-all-options-available-for-the-virtual-machine-staging-helloapp-001" class="anchor" href="#show-all-options-available-for-the-virtual-machine-staging-helloapp-001"><span class="octicon octicon-link"></span></a>Show all options available for the Virtual Machine staging-helloapp-001</h3>
+
+<pre><code>$ env='staging' rake -T staging-helloapp-001                                                                                                                   
+rake sbx:staging-helloapp-001:allocate            # allocate these machines to hosts (but don't actually launch them - this is a dry run)
+rake sbx:staging-helloapp-001:allocate_vips       # allocate IPs for these virtual services
+rake sbx:staging-helloapp-001:audit_hosts         # new hosts model auditing
+rake sbx:staging-helloapp-001:clean               # clean away all traces of these machines
+rake sbx:staging-helloapp-001:disable_notify      # disable notify for these machines
+rake sbx:staging-helloapp-001:enable_notify       # enable notify for these machines
+rake sbx:staging-helloapp-001:free_ip_allocation  # frees up ip and vip allocation of these machines
+rake sbx:staging-helloapp-001:free_ips            # free IPs
+rake sbx:staging-helloapp-001:free_vips           # free IPs for these virtual services
+rake sbx:staging-helloapp-001:launch              # launch these machines
+rake sbx:staging-helloapp-001:mping               # perform an MCollective ping against these machines
+rake sbx:staging-helloapp-001:orc:resolve         # deploys the up2date version of the artifact according to the cmdb using orc
+rake sbx:staging-helloapp-001:provision           # perform all steps required to create and configure the machine(s)
+rake sbx:staging-helloapp-001:puppet:clean        # Remove signed certs from puppetmaster
+rake sbx:staging-helloapp-001:puppet:poll_sign    # sign outstanding Puppet certificate signing requests for these machines
+rake sbx:staging-helloapp-001:puppet:run          # run Puppet on these machines
+rake sbx:staging-helloapp-001:puppet:sign         # sign outstanding Puppet certificate signing requests for these machines
+rake sbx:staging-helloapp-001:puppet:wait         # wait for puppet to complete its run on these machines
+rake sbx:staging-helloapp-001:reprovision         # perform a clean followed by a provision
+rake sbx:staging-helloapp-001:resolve             # resolve the IP numbers of these machines
+rake sbx:staging-helloapp-001:test                # carry out all appropriate tests on these machines
+rake sbx:staging-helloapp-001:to_enc              # outputs the specs for these machines, in the format to feed to the provisioning tools
+rake sbx:staging-helloapp-001:to_specs            # outputs the specs for these machines, in the format to feed to the provisioning tools
+rake sbx:staging-helloapp-001:to_vip_spec         # outputs the specs for these machines, in the format to feed to the provisioning tools
+</code></pre>
+
+<h3>
+<a name="show-machine-spec-for-virtual-machine-staging-helloapp-001" class="anchor" href="#show-machine-spec-for-virtual-machine-staging-helloapp-001"><span class="octicon octicon-link"></span></a>Show machine spec for Virtual Machine staging-helloapp-001</h3>
+
+<pre><code>$ env='staging' rake sbx:staging-helloapp-001:to_specs                                                                                                         
+--- 
+  - !ruby/sym networks: 
+      - !ruby/sym mgmt
+      - !ruby/sym prod
+    !ruby/sym ram: "2097152"
+    !ruby/sym fabric: earth
+    !ruby/sym domain: earth.net.local
+    !ruby/sym vcpus: "1"
+    !ruby/sym qualified_hostnames: 
+      !ruby/sym mgmt: staging-helloapp-001.mgmt.earth.net.local
+      !ruby/sym prod: staging-helloapp-001.earth.net.local
+    !ruby/sym hostname: staging-helloapp-001
+    !ruby/sym availability_group: staging-helloapp
+    !ruby/sym storage: 
+      !ruby/sym /: 
+        !ruby/sym type: os
+        !ruby/sym prepare: 
+          !ruby/sym method: image
+          !ruby/sym options: 
+            !ruby/sym path: /var/local/images/gold/generic.img
+        !ruby/sym size: "5G"
+</code></pre>
+
+<h3>
+<a name="show-enc-data-puppet-code-for-virtual-machine-staging-helloapp-001" class="anchor" href="#show-enc-data-puppet-code-for-virtual-machine-staging-helloapp-001"><span class="octicon octicon-link"></span></a>Show ENC data (puppet code) for Virtual Machine staging-helloapp-001</h3>
+
+<pre><code>env='staging' rake sbx:staging-helloapp-001:to_enc
+--- 
+  "role::http_app": 
+    port: "8000"
+    dependencies: 
+      db.hello.hostname: staging-hellodb-001.earth.net.local
+      db.hello.database: hello
+      db.hello.username: JavaHttpRef
+      db.hello.password_hiera_key: enc/staging/JavaHttpRef/mysql_password
+    environment: staging
+    vip_fqdn: staging-helloapp-vip.earth.net.local
+    group: blue
+    dependant_instances: 
+      - staging-helloproxy-001.earth.net.local
+      - staging-helloproxy-002.earth.net.local
+      - staging-lb-001.earth.net.local
+      - staging-lb-002.earth.net.local
+    application: JavaHttpRef
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Stackbuilder-config maintained by <a href="https://github.com/tim-group">tim-group</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
