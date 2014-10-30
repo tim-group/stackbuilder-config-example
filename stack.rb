@@ -112,10 +112,9 @@ env 'staging',
     :every_machine_destroyable=>true,
 } do
   instantiate_stack 'fabric'
-  instantiate_stack 'loadbalancer'
-  instantiate_stack 'hello'
+  instantiate_stack 'helloworld'
   instantiate_stack 'hello_db'
 end
 
 
-# vim: set ts=2 sw=2 et fdm=syntax :
+# vim: set ts=2 sw=2 et :
