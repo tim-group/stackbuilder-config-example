@@ -47,7 +47,7 @@ stack 'helloworld' do
     # Declare dependency on another stack (target)
     #   * The fqdn of servers in the source stack (on the prod network) will be appended to a list of dependant_instances on the target stack
     #   * The target stack will provide config_params to the source stack
-    self.depends_on = ['hellodb']
+    depend_on = 'hellodb'
     # For each machine in the stack
     each_machine do |machine|
       # Specify memory requirements (default: 2097152)
