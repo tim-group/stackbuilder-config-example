@@ -1,6 +1,7 @@
-Stackbuilder Config
+Stackbuilder Config Example
 =========
-This is a DSL that is used by [stackbuilder] to configure allocate, provision 'Stacks' of Virtual Machines
+Stackbuilder Config is a DSL that is used by [stackbuilder] to configure allocate, provision 'Stacks' of Virtual Machines
+This repository provides example configuration for this DSL.
 
 [stackbuilder]:https://github.com/tim-group/stackbuilder
 [provisioning-tools]:https://github.com/tim-group/provisioning-tools
