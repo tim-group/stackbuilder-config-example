@@ -29,7 +29,7 @@ stack 'helloworld' do
   # Create a virtual proxy stack
   virtual_proxyserver 'helloproxy' do
     # Create a new Apache vhost for a specific application
-    vhost('helloapp', {:server_name => 'hello.example.com'}, vhost_properties={:apache_logs_to_syslog => true}) do
+    vhost('helloapp', :apache_logs_to_syslog => true) do
       # Specify an additional server alias
       with_alias "helloworld.example.com"
     end
