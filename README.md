@@ -45,7 +45,7 @@ Usage information
 
 ####Show Virtual Machine spec for Virtual Machine staging-helloapp-001
 ```sh
-$ env='staging' rake sbx:staging-helloapp-001.mgmt.st.net.local:to_specs
+$ env='staging' rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:to_specs
       - !ruby/sym networks:
       - !ruby/sym mgmt
       - !ruby/sym prod
@@ -70,7 +70,7 @@ $ env='staging' rake sbx:staging-helloapp-001.mgmt.st.net.local:to_specs
 
 ####Show ENC data (puppet code) for a Virtual Machine staging-helloapp-001
 ```sh
-env='staging' rake sbx:staging-helloapp-001.mgmt.st.net.local:to_enc
+env='staging' rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:to_enc
 ---
   "role::http_app":
     port: "8000"
@@ -92,31 +92,31 @@ env='staging' rake sbx:staging-helloapp-001.mgmt.st.net.local:to_enc
 
 ####Show all options available for the Virtual Machine staging-helloapp-001
 ```sh
-$ env='staging' rake -T staging-helloapp-001.mgmt.st.net.local
-rake sbx:staging-helloapp-001.mgmt.st.net.local:allocate            # allocate these machines to hosts (but don't actually launch them - this is a dry run)
-rake sbx:staging-helloapp-001.mgmt.st.net.local:allocate_vips       # allocate IPs for these virtual services
-rake sbx:staging-helloapp-001.mgmt.st.net.local:audit_hosts         # new hosts model auditing
-rake sbx:staging-helloapp-001.mgmt.st.net.local:clean               # clean away all traces of these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:disable_notify      # disable notify for these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:enable_notify       # enable notify for these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:free_ip_allocation  # frees up ip and vip allocation of these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:free_ips            # free IPs
-rake sbx:staging-helloapp-001.mgmt.st.net.local:free_vips           # free IPs for these virtual services
-rake sbx:staging-helloapp-001.mgmt.st.net.local:launch              # launch these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:mping               # perform an MCollective ping against these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:orc:resolve         # deploys the up2date version of the artifact according to the cmdb using orc
-rake sbx:staging-helloapp-001.mgmt.st.net.local:provision           # perform all steps required to create and configure the machine(s)
-rake sbx:staging-helloapp-001.mgmt.st.net.local:puppet:clean        # Remove signed certs from puppetmaster
-rake sbx:staging-helloapp-001.mgmt.st.net.local:puppet:poll_sign    # sign outstanding Puppet certificate signing requests for these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:puppet:run          # run Puppet on these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:puppet:sign         # sign outstanding Puppet certificate signing requests for these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:puppet:wait         # wait for puppet to complete its run on these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:reprovision         # perform a clean followed by a provision
-rake sbx:staging-helloapp-001.mgmt.st.net.local:resolve             # resolve the IP numbers of these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:test                # carry out all appropriate tests on these machines
-rake sbx:staging-helloapp-001.mgmt.st.net.local:to_enc              # outputs the specs for these machines, in the format to feed to the provisioning tools
-rake sbx:staging-helloapp-001.mgmt.st.net.local:to_specs            # outputs the specs for these machines, in the format to feed to the provisioning tools
-rake sbx:staging-helloapp-001.mgmt.st.net.local:to_vip_spec         # outputs the specs for these machines, in the format to feed to the provisioning tools
+$ env='staging' rake -T staging-helloapp-001.mgmt.earth.st.net.local
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:allocate            # allocate these machines to hosts (but don't actually launch them - this is a dry run)
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:allocate_vips       # allocate IPs for these virtual services
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:audit_hosts         # new hosts model auditing
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:clean               # clean away all traces of these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:disable_notify      # disable notify for these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:enable_notify       # enable notify for these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:free_ip_allocation  # frees up ip and vip allocation of these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:free_ips            # free IPs
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:free_vips           # free IPs for these virtual services
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:launch              # launch these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:mping               # perform an MCollective ping against these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:orc:resolve         # deploys the up2date version of the artifact according to the cmdb using orc
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:provision           # perform all steps required to create and configure the machine(s)
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:puppet:clean        # Remove signed certs from puppetmaster
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:puppet:poll_sign    # sign outstanding Puppet certificate signing requests for these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:puppet:run          # run Puppet on these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:puppet:sign         # sign outstanding Puppet certificate signing requests for these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:puppet:wait         # wait for puppet to complete its run on these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:reprovision         # perform a clean followed by a provision
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:resolve             # resolve the IP numbers of these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:test                # carry out all appropriate tests on these machines
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:to_enc              # outputs the specs for these machines, in the format to feed to the provisioning tools
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:to_specs            # outputs the specs for these machines, in the format to feed to the provisioning tools
+rake sbx:staging-helloapp-001.mgmt.earth.st.net.local:to_vip_spec         # outputs the specs for these machines, in the format to feed to the provisioning tools
 ```
 
 ### Stacks
