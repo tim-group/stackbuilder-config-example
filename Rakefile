@@ -2,6 +2,6 @@ require 'rubygems'
 require 'rake/dsl_definition'
 include Rake::DSL # this should be in stacks
 
-$LOAD_PATH << '/opt/stackbuilder/lib/ruby/site_ruby'
+$LOAD_PATH << '/usr/local/lib/site_ruby/timgroup/'
 require 'stackbuilder/stacks/rake/tasks'
-$LOAD_PATH.delete('/opt/stackbuilder/lib/ruby/site_ruby')
+$LOAD_PATH.delete('/usr/local/lib/site_ruby/timgroup/')
