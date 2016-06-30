@@ -43,6 +43,12 @@ Terminology
   * Dynamic DNS
   * MCollective
 
+
+
+Overview
+-----------
+  ![alt tag](https://raw.githubusercontent.com/tim-group/stackbuilder-config-example/master/media/overview.png)
+
 ---------------------------------
 
 Usage information
