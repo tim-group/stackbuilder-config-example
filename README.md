@@ -8,30 +8,40 @@ This repository provides example configuration for this DSL.
 
 Terminology
 -----------
+
+##### Virtual Machine:
+* A single machine of a given type: e.g a single apache server
+* Can be individually configured but are generally identical to their siblings
+
+##### Machine Set:
+* A simple container consisting of 1 or more Virtual Machine's
+* Machine Sets can be extended take on a custom behaviour: eg. MySQL Cluster, RabbitMQ cluster, App Service, Mail Service, Load Balancer Service.
+* The container has all the meta information and attributes that apply to all Virtual Machines in the container.
+* Eg. A machine set extended by App Service could contain the name of the application, ports, firewall rules and the number of instances(VM's).
+
+##### Stack:
+* Container of 1 or more Machine Set(s).
+* Can be bound to 0 or more environemnts
+* Can be configured differently but are generally identical across all environments (consistency)
+
+##### Site:
+* A specific geographic location.
+* Typically referenced by an abbreviated name.
+* Eg.  'lon' (London) or 'ny' (New York)
+
+#####Environments:
+* A container of 'Stacks' in 1 or 2 sites
+* Each environment has a primary and an optional secondary site.
+* The Machine Set is responsible for determining which site Virtual Machines should reside.
+* Environments can also contain other environments (more advanced topic).
+* The environment can also include meta information such as networking routes that apply to all 'Stacks' in that environment.
+
 ##### Computenode:
 * This is a dom0 (KVM host) that has been configured to host stack built Virtual Machines
 * Dependencies:
   * [provisioning-tools]
-
-#####Environments:
-* Container of Stacks
-* Attributes:
-  * primary_site (location)
-  * secondary_site (location)
-
-#####Stack:
-* Container of Virtual Services
-* Exist in 0 or more environment
-* Can be configured differently but are generally identical across all environments
-
-#####Virtual Service:
-* Container consisting of 1 or more Virtual Machine's
-* Load balanced these can work jointly to provide a service eg. several apache servers provide proxying
-* Non-load balanced virtual machines, operate in a standalone basis (JBOVM)
-
-#####Virtual Machine:
-* A single machine of a given type: e.g a single apache virtual machine
-* Can be individually configured but are generally identical to their siblings
+  * Dynamic DNS
+  * MCollective
 
 ---------------------------------
 
