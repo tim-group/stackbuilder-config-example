@@ -1,4 +1,4 @@
-stack 'helloworld-db' do
+stack 'hello-db' do
   # MySQL Cluster Virtual Service
   mysql_cluster 'hellodb' do
     self.database_name = "hello"

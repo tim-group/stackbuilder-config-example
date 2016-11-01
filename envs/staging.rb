@@ -13,10 +13,11 @@ env 'staging',
     # Allow every machine to be destroyable (Overrides individiual allow_destroy settings for all Virtual Machines)
     :every_machine_destroyable=>true,
 } do
-  instantiate_stack 'nat-service'
+  instantiate_stack 'hello-app'
+  instantiate_stack 'hello-db'
+  instantiate_stack 'hello-proxy'
   instantiate_stack 'loadbalancer-service'
-  instantiate_stack 'helloworld'
-  instantiate_stack 'helloworld-db'
+  instantiate_stack 'nat-service'
 end
 
 # vim: set ts=2 sw=2 et :
