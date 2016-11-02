@@ -12,7 +12,7 @@ stack 'hello-db' do
     self.create_persistent_storage_override
     each_machine do |machine|
       # By default all MySQL databases are protected from shutdown (non-destroyable). This option will override the default behaviour
-      machine.allow_destroy(true)
+      machine.destroyable = true
     end
   end
 end
