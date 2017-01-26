@@ -9,6 +9,6 @@ stack 'hello-proxy' do
       add_properties :apache_logs_to_syslog => true
     end
     # Allow the nat server to discover and auto-configure itself for these proxy servers
-    enable_nat
+    nat_config.dnat_enabled = true
   end
 end
