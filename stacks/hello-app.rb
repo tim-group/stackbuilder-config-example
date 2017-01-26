@@ -5,7 +5,10 @@ stack 'hello-app' do
     # JavaHttpRef is a dummy application we have created (see github)
     self.application = 'JavaHttpRef'
     #Specify how many servers should be created (default: 2)
-    self.instances = 2
+    self.instances = {
+      'earth' => 2,
+      'moon'  => 0,
+    }
 
     self.jvm_args = '-Xms1G -Xmx1G'
 
