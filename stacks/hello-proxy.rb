@@ -6,7 +6,7 @@ stack 'hello-proxy' do
       # Specify an additional server alias
       @aliases << 'helloworld.example.com'
       # Send apache logging to syslog
-      add_properties :apache_logs_to_syslog => true
+      @log_to_syslog = true
     end
     # Allow the nat server to discover and auto-configure itself for these proxy servers
     nat_config.dnat_enabled = true
