@@ -3,6 +3,8 @@ stack 'hello-proxy' do
   proxy_service 'helloproxy' do
     # Create a new Apache vhost for a specific <application>, <fqdn>
     vhost('helloapp', 'hello.timgroup.com') do
+      # Use this vhost for monitoring health of apache from the load balancer
+      use_for_lb_healthcheck
       # Specify an additional server alias
       @aliases << 'helloworld.example.com'
       # Send apache logging to syslog
