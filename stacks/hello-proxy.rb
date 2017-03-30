@@ -10,5 +10,10 @@ stack 'hello-proxy' do
     end
     # Allow the nat server to discover and auto-configure itself for these proxy servers
     nat_config.dnat_enabled = true
+    # For each virtual machine in the stack
+    each_machine do |machine|
+      # Specify that this machine should use the precise gold image
+      machine.template(:precise)
+    end
   end
 end

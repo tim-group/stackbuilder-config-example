@@ -19,6 +19,8 @@ stack 'hello-db' do
     # Disable persistent storage (rebuilding server will rebuild storage == All data lost)
     self.create_persistent_storage_override
     each_machine do |machine|
+      # Use Ubuntu precise
+      machine.template(:precise)
       # By default all MySQL databases are protected from shutdown (non-destroyable). This option will override the default behaviour
       machine.destroyable = true
     end

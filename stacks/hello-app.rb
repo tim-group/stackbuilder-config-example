@@ -27,7 +27,7 @@ stack 'hello-app' do
       # Specify disk space for / partition (default: 3G)
       machine.modify_storage({ '/' => { :size => '5G' } })
       # Specify that this machine should use the trusty gold image
-      machine.use_trusty
+      machine.template(:trusty)
       # Specify that this machine should go on a KVM host with the 'HP' tag (staging env only)
       machine.allocation_tags << 'HP' if %w(staging).include? environment.name
     end

@@ -4,6 +4,7 @@ stack 'puppetserver-cluster' do
       'earth' => 1
     }
     each_machine do |machine|
+      machine.template(:precise)
       machine.cnames = {} if environment.options[:disable_puppetmaster_cname_allocation]
     end
   end
